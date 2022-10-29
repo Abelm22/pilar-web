@@ -7,10 +7,12 @@ import {AppBar,
   Avatar,
   Drawer,
   List,
+  Divider,
   ListItem,
   ListItemButton,
   ListItemText,
   ListItemIcon,
+  Grid,
   Popover,
   MenuItem as MenuItemMui,
   Collapse} from '@mui/material';
@@ -20,7 +22,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import React, {useEffect, useState, useRef} from 'react';
 import { Outlet, useLocation, useNavigate, Link as RouterLink } from 'react-router-dom';
 import { drawerMenu, popMenu } from '../../constants/menu';
-
+import { useSelector, useDispatch } from "react-redux";
+import { appSelector } from '../../redux/appRedux';
 
 
 
@@ -138,6 +141,9 @@ const SideMenu = ({open, onClose}) => {
 
 
 const DashboardLayout = ()=>{
+  const dispatch = useDispatch()
+  const pageTitle = useSelector(appSelector.pageTitle)
+
   const [open, setOpen]= useState(false)
   
 
@@ -148,15 +154,32 @@ const DashboardLayout = ()=>{
     
     <MenuIcon sx={{color:'white', mr: 2, cursor:'pointer'}} onClick={()=>setOpen(true)} />
     
-    <Typography
-      component="h1"
-      variant="h6"
-      color="inherit"
-      noWrap
-      sx={{ flexGrow: 1 }}
-      >
-      Pilar Tecno Web
-    </Typography>
+    
+      <Grid container>
+        <Grid item auto>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+            >
+            Pilar Tecno Web
+          </Typography>
+        </Grid>
+        <Divider orientation="vertical" flexItem> </Divider>
+        <Grid item auto>
+        <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+            >
+            {pageTitle}
+          </Typography>
+        </Grid>
+      </Grid>
     <PopMenu/>
     </Toolbar>
     </AppBar>
