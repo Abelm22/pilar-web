@@ -14,7 +14,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(appActions.setPageName('TABLERO'))
-  },[])
+  },)
   const todo = useSelector(appSelector.todo)
   return (
    <Grid container spacing={3}>

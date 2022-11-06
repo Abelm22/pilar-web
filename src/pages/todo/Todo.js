@@ -16,7 +16,7 @@ const Todo = () => {
 
   useEffect(()=>{
     dispatch(appActions.setPageName('LISTA DE TAREAS'))
-  },[])
+  },)
   
   const handleChange = (e)=>{
      setText(e.target.value)
@@ -36,7 +36,7 @@ const Todo = () => {
     dispatch(appActions.deleteTodo(id))
   }
       
-    
+  
    
 
 
@@ -66,7 +66,7 @@ const Todo = () => {
             (
               <Stack key={t.id} sx={{justifyContent:'space-between'}}direction='row'>
                 <Grid item md={1}>
-                  <Checkbox onChange={e=>handleChecked(e,t.id)} />
+                  <Checkbox  onChange={e=>handleChecked(e,t.id)} />
                 </Grid>
                 <Grid item md={9} sx={{pt: 1}}>
                   <Typography sx={{fontSize:18,fontWeight:700}}>{t.text}</Typography>
